@@ -7,7 +7,9 @@
 <title>Yıldırım AI Galeri</title>
 
 <style>
-*{box-sizing:border-box;}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -23,14 +25,14 @@ body{
 }
 
 .logo{
-    font-size:27px;
+    font-size:28px;
     font-weight:bold;
     color:#d4af37;
 }
 
 .alt{
     color:#aaa;
-    margin-top:6px;
+    margin-top:7px;
     font-size:14px;
 }
 
@@ -54,6 +56,7 @@ body{
     background:#151515;
     color:#fff;
     font-weight:bold;
+    font-size:15px;
 }
 
 .menu button.active{
@@ -74,6 +77,10 @@ h2{
     margin-top:0;
 }
 
+h3{
+    color:#d4af37;
+}
+
 label{
     display:block;
     margin-top:14px;
@@ -82,7 +89,8 @@ label{
     font-size:14px;
 }
 
-input{
+input,
+select{
     width:100%;
     padding:14px;
     border-radius:10px;
@@ -90,6 +98,11 @@ input{
     background:#1b1b1b;
     color:#fff;
     font-size:16px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#d4af37;
 }
 
 .row{
@@ -123,35 +136,67 @@ input{
     border:1px solid #d4af37;
 }
 
-.karar{
-    text-align:center;
-    font-size:25px;
-    font-weight:bold;
+.baslik{
     color:#d4af37;
+    font-size:20px;
+    font-weight:bold;
     margin-bottom:15px;
 }
 
-.analiz{
+.analiz-metni{
     white-space:pre-wrap;
-    line-height:1.6;
+    line-height:1.7;
     color:#eee;
+    font-size:15px;
 }
 
 .hata{
-    color:#ff7777;
     background:#2a1111;
+    border:1px solid #8b3333;
+    color:#ff8d8d;
+    padding:15px;
+    border-radius:10px;
+    line-height:1.5;
+}
+
+.bilgi{
+    margin-top:15px;
     padding:12px;
     border-radius:10px;
-    margin-top:15px;
+    background:#202020;
+    color:#aaa;
+    line-height:1.5;
+    font-size:13px;
+}
+
+.alt-bilgi{
+    text-align:center;
+    color:#777;
+    font-size:12px;
+    margin-top:25px;
+    line-height:1.6;
 }
 
 @media(max-width:600px){
+
     .menu{
         grid-template-columns:1fr;
     }
 
     .row{
         grid-template-columns:1fr;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .container{
+        padding:12px;
+    }
+
+    .panel{
+        padding:15px;
     }
 }
 </style>
@@ -160,94 +205,287 @@ input{
 <body>
 
 <div class="header">
-    <div class="logo">⚡ YILDIRIM AI</div>
-    <div class="alt">Yıldırım Oto Galeri • Alım Satım Asistanı</div>
+
+    <div class="logo">
+        ⚡ YILDIRIM AI
+    </div>
+
+    <div class="alt">
+        Yıldırım Oto Galeri • Alım Satım Asistanı
+    </div>
+
 </div>
+
 
 <div class="container">
 
     <div class="menu">
-        <button class="active">🚗 Araç</button>
-        <button>🏠 Ev</button>
-        <button>🌳 Arsa</button>
+
+        <button class="active" onclick="sekmeSec(this)">
+            🚗 Araç
+        </button>
+
+        <button onclick="sekmeSec(this)">
+            🏠 Ev
+        </button>
+
+        <button onclick="sekmeSec(this)">
+            🌳 Arsa
+        </button>
+
     </div>
+
 
     <div class="panel">
 
-        <h2>🚗 Araç Analizi</h2>
+        <h2>
+            🚗 Araç Analizi
+        </h2>
 
-        <label>Marka</label>
-        <input type="text" id="marka" placeholder="Örn: BMW">
+        <label>
+            Marka
+        </label>
 
-        <label>Model</label>
-        <input type="text" id="model" placeholder="Örn: 320i M Sport">
+        <input
+            type="text"
+            id="marka"
+            placeholder="Örn: BMW"
+        >
+
+
+        <label>
+            Model
+        </label>
+
+        <input
+            type="text"
+            id="model"
+            placeholder="Örn: 320i M Sport"
+        >
+
 
         <div class="row">
 
             <div>
-                <label>Model Yılı</label>
-                <input type="number" id="yil" placeholder="2020">
+
+                <label>
+                    Model Yılı
+                </label>
+
+                <input
+                    type="number"
+                    id="yil"
+                    placeholder="2020"
+                >
+
             </div>
 
+
             <div>
-                <label>Kilometre</label>
-                <input type="number" id="km" placeholder="85000">
+
+                <label>
+                    Kilometre
+                </label>
+
+                <input
+                    type="number"
+                    id="km"
+                    placeholder="85000"
+                >
+
             </div>
 
         </div>
 
-        <label>Şehir</label>
-        <input type="text" id="sehir" placeholder="Örn: İstanbul">
 
-        <label>Araç için istenen fiyat</label>
-        <input type="number" id="istenen" placeholder="1550000">
+        <label>
+            Şehir
+        </label>
 
-        <label>Donanım / Paket</label>
-        <input type="text" id="paket" placeholder="Örn: M Sport">
+        <input
+            type="text"
+            id="sehir"
+            placeholder="Örn: İstanbul"
+        >
 
-        <label>Ekspertiz masrafı</label>
-        <input type="number" id="ekspertiz" value="5000">
 
-        <label>Noter masrafı</label>
-        <input type="number" id="noter" value="2000">
+        <label>
+            Araç için istenen fiyat
+        </label>
 
-        <label>Diğer masraflar</label>
-        <input type="number" id="diger" value="5000">
+        <input
+            type="number"
+            id="istenen"
+            placeholder="1550000"
+        >
 
-        <label>Minimum istediğim kâr</label>
-        <input type="number" id="minimumKar" value="150000">
 
-        <button class="ai-button" id="analizButton" onclick="analizEt()">
+        <label>
+            Donanım / Paket
+        </label>
+
+        <input
+            type="text"
+            id="paket"
+            placeholder="Örn: M Sport"
+        >
+
+
+        <div class="row">
+
+            <div>
+
+                <label>
+                    Ekspertiz masrafı
+                </label>
+
+                <input
+                    type="number"
+                    id="ekspertiz"
+                    value="5000"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Noter masrafı
+                </label>
+
+                <input
+                    type="number"
+                    id="noter"
+                    value="2000"
+                >
+
+            </div>
+
+        </div>
+
+
+        <label>
+            Diğer masraflar
+        </label>
+
+        <input
+            type="number"
+            id="diger"
+            value="5000"
+        >
+
+
+        <label>
+            Minimum istediğim kâr
+        </label>
+
+        <input
+            type="number"
+            id="minimumKar"
+            value="150000"
+        >
+
+
+        <button
+            class="ai-button"
+            id="buton"
+            onclick="analizEt()"
+        >
             ⚡ YILDIRIM AI İLE ANALİZ ET
         </button>
 
-        <div class="sonuc" id="sonuc">
 
-            <div class="karar">
+        <div
+            class="sonuc"
+            id="sonuc"
+        >
+
+            <div class="baslik">
                 ⚡ YILDIRIM AI ANALİZ SONUCU
             </div>
 
-            <div class="analiz" id="analizMetni"></div>
+
+            <div
+                class="analiz-metni"
+                id="analizMetni"
+            ></div>
+
+
+            <div class="bilgi">
+
+                ⚠️ Önemli: Bu analiz, verilen bilgiler üzerinden AI
+                değerlendirmesidir. Gerçek araç alımında ekspertiz,
+                hasar kaydı, servis geçmişi, mekanik durum ve güncel
+                piyasa karşılaştırması ayrıca kontrol edilmelidir.
+
+            </div>
 
         </div>
+
+    </div>
+
+
+    <div class="alt-bilgi">
+
+        ⚡ Yıldırım Oto Galeri<br>
+        Yıldırım AI Alım Asistanı
 
     </div>
 
 </div>
 
+
 <script>
 
-const API_URL = "https://yildirim-ai-backend.onrender.com/api/analyze";
+function sekmeSec(button){
+
+    let butonlar =
+        document.querySelectorAll(".menu button");
+
+    butonlar.forEach(function(btn){
+
+        btn.classList.remove("active");
+
+    });
+
+    button.classList.add("active");
+
+}
+
 
 async function analizEt(){
 
-    const marka = document.getElementById("marka").value.trim();
-    const model = document.getElementById("model").value.trim();
-    const yil = document.getElementById("yil").value;
-    const km = document.getElementById("km").value;
-    const sehir = document.getElementById("sehir").value.trim();
-    const istenen = document.getElementById("istenen").value;
-    const paket = document.getElementById("paket").value.trim();
+    const buton =
+        document.getElementById("buton");
+
+    const sonuc =
+        document.getElementById("sonuc");
+
+    const analizMetni =
+        document.getElementById("analizMetni");
+
+
+    const marka =
+        document.getElementById("marka").value.trim();
+
+    const model =
+        document.getElementById("model").value.trim();
+
+    const yil =
+        document.getElementById("yil").value;
+
+    const km =
+        document.getElementById("km").value;
+
+    const sehir =
+        document.getElementById("sehir").value.trim();
+
+    const istenen =
+        document.getElementById("istenen").value;
+
+    const paket =
+        document.getElementById("paket").value.trim();
 
     const ekspertiz =
         document.getElementById("ekspertiz").value || 0;
@@ -261,79 +499,118 @@ async function analizEt(){
     const minimumKar =
         document.getElementById("minimumKar").value || 0;
 
-    const sonuc = document.getElementById("sonuc");
-    const analizMetni = document.getElementById("analizMetni");
-    const buton = document.getElementById("analizButton");
 
-    if(!marka || !model || !yil || !km || !istenen){
+    if(
+        !marka ||
+        !model ||
+        !yil ||
+        !km ||
+        !istenen
+    ){
 
-        alert("Lütfen marka, model, model yılı, kilometre ve istenen fiyatı gir.");
+        alert(
+            "Lütfen marka, model, model yılı, kilometre ve istenen fiyatı gir."
+        );
 
         return;
+
     }
 
+
     buton.disabled = true;
-    buton.innerText = "⚡ YILDIRIM AI ANALİZ EDİYOR...";
+
+    buton.innerText =
+        "⚡ YILDIRIM AI ANALİZ EDİYOR...";
+
 
     sonuc.style.display = "block";
 
     analizMetni.innerText =
-        "Yıldırım AI sunucuya bağlanıyor...\n\n" +
-        "Araç bilgileri analiz ediliyor...";
+        "Araç bilgileri Yıldırım AI sunucusuna gönderiliyor...\n\n" +
+        "Lütfen bekleyin.";
+
 
     try{
 
-        const cevap = await fetch(API_URL, {
+        const cevap =
+            await fetch(
+                "https://yildirim-ai-backend.onrender.com/api/analyze",
+                {
+                    method:"POST",
 
-            method:"POST",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
 
-            headers:{
-                "Content-Type":"application/json"
-            },
+                    body:JSON.stringify({
 
-            body:JSON.stringify({
+                        marka:marka,
 
-                marka: marka,
-                model: model,
-                yil: yil,
-                km: km,
-                sehir: sehir,
-                istenen: istenen,
-                paket: paket,
-                ekspertiz: ekspertiz,
-                noter: noter,
-                diger: diger,
-                minimumKar: minimumKar
+                        model:model,
 
-            })
+                        yil:yil,
 
-        });
+                        km:km,
 
-        const veri = await cevap.json();
+                        sehir:sehir,
 
-        if(!cevap.ok || !veri.success){
+                        istenen:istenen,
+
+                        paket:paket,
+
+                        ekspertiz:ekspertiz,
+
+                        noter:noter,
+
+                        diger:diger,
+
+                        minimumKar:minimumKar
+
+                    })
+                }
+            );
+
+
+        const veri =
+            await cevap.json();
+
+
+        if(
+            !cevap.ok ||
+            !veri.success
+        ){
 
             throw new Error(
-                veri.error || "Sunucudan cevap alınamadı."
+                veri.error ||
+                "Sunucudan cevap alınamadı."
             );
 
         }
 
-        analizMetni.innerText = veri.analysis;
 
-    }
+        analizMetni.innerText =
+            veri.analysis;
 
-    catch(hata){
+
+    }catch(hata){
+
+        console.error(hata);
+
 
         analizMetni.innerHTML =
             '<div class="hata">' +
-            '❌ HATA<br><br>' +
+
+            '❌ YILDIRIM AI HATASI<br><br>' +
+
             hata.message +
+
+            '<br><br>' +
+
+            'Sunucunun çalıştığından ve internet bağlantınızın olduğundan emin olun.' +
+
             '</div>';
 
-    }
-
-    finally{
+    }finally{
 
         buton.disabled = false;
 
