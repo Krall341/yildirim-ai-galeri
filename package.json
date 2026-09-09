@@ -1,0 +1,13 @@
+{
+  "name": "yildirim-ai-galeri",
+  "version": "1.0.0",
+  "description": "Yıldırım AI Galeri",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "openai": "^4.104.0"
+  }
+}
