@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Yıldırım AI Galeri</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#080808;
+    color:#fff;
+}
+
+.header{
+    background:linear-gradient(135deg,#111,#1b1608);
+    padding:25px 18px;
+    border-bottom:2px solid #d4af37;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    color:#d4af37;
+}
+
+.alt{
+    color:#aaa;
+    margin-top:6px;
+    font-size:14px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:18px;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.menu button{
+    padding:15px 8px;
+    border:1px solid #444;
+    border-radius:12px;
+    background:#151515;
+    color:#fff;
+    font-weight:bold;
+}
+
+.menu button.active{
+    background:#d4af37;
+    color:#000;
+}
+
+.panel{
+    background:#111;
+    border:1px solid #333;
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:18px;
+}
+
+h2{
+    color:#d4af37;
+    margin-top:0;
+}
+
+label{
+    display:block;
+    margin-top:14px;
+    margin-bottom:6px;
+    color:#ccc;
+    font-size:14px;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #444;
+    background:#1b1b1b;
+    color:#fff;
+    font-size:16px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.ai-button{
+    width:100%;
+    margin-top:22px;
+    padding:17px;
+    border:0;
+    border-radius:12px;
+    background:#d4af37;
+    color:#000;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.ai-button:active{
+    transform:scale(.98);
+}
+
+.sonuc{
+    display:none;
+    margin-top:20px;
+    padding:18px;
+    border-radius:14px;
+    background:#171717;
+    border:1px solid #d4af37;
+}
+
+.karar{
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+    color:#d4af37;
+    margin-bottom:15px;
+}
+
+.satir{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #333;
+}
+
+.satir:last-child{
+    border-bottom:0;
+}
+
+.deger{
+    font-weight:bold;
+}
+
+.not{
+    margin-top:15px;
+    padding:12px;
+    border-radius:10px;
+    background:#202020;
+    color:#ccc;
+    line-height:1.5;
+}
+
+@media(max-width:600px){
+
+    .menu{
+        grid-template-columns:1fr;
+    }
+
+    .row{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+    <div class="logo">⚡ YILDIRIM AI</div>
+
+    <div class="alt">
+        Yıldırım Oto Galeri • Alım Satım Asistanı
+    </div>
+
+</div>
+
+
+<div class="container">
+
+
+    <div class="menu">
+
+        <button class="active">
+            🚗 Araç
+        </button>
+
+        <button>
+            🏠 Ev
+        </button>
+
+        <button>
+            🌳 Arsa
+        </button>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>🚗 Araç Analizi</h2>
+
+        <label>Marka</label>
+
+        <input
+            type="text"
+            id="marka"
+            placeholder="Örn: BMW"
+        >
+
+
+        <label>Model</label>
+
+        <input
+            type="text"
+            id="model"
+            placeholder="Örn: 320i M Sport"
+        >
+
+
+        <div class="row">
+
+            <div>
+
+                <label>Model Yılı</label>
+
+                <input
+                    type="number"
+                    id="yil"
+                    placeholder="2020"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>Kilometre</label>
+
+                <input
+                    type="number"
+                    id="km"
+                    placeholder="85000"
+                >
+
+            </div>
+
+        </div>
+
+
+        <label>Şehir</label>
+
+        <input
+            type="text"
+            id="sehir"
+            placeholder="Örn: İstanbul"
+        >
+
+
+        <label>Araç için istenen fiyat</label>
+
+        <input
+            type="number"
+            id="istenen"
+            placeholder="1550000"
+        >
+
+
+        <label>Donanım / Paket</label>
+
+        <input
+            type="text"
+            id="paket"
+            placeholder="Örn: M Sport"
+        >
+
+
+        <label>Ekspertiz masrafı</label>
+
+        <input
+            type="number"
+            id="ekspertiz"
+            value="5000"
+        >
+
+
+        <label>Noter masrafı</label>
+
+        <input
+            type="number"
+            id="noter"
+            value="2000"
+        >
+
+
+        <label>Diğer masraflar</label>
+
+        <input
+            type="number"
+            id="diger"
+            value="5000"
+        >
+
+
+        <label>Minimum istediğim kâr</label>
+
+        <input
+            type="number"
+            id="minimumKar"
+            value="150000"
+        >
+
+
+        <button
+            class="ai-button"
+            onclick="analizEt()"
+        >
+            ⚡ YILDIRIM AI İLE ANALİZ ET
+        </button>
+
+
+        <div
+            class="sonuc"
+            id="sonuc"
+        >
+
+            <div class="karar">
+                🟡 ÖRNEK ANALİZ
+            </div>
+
+
+            <div class="satir">
+
+                <span>Tahmini piyasa</span>
+
+                <span
+                    class="deger"
+                    id="piyasa"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="satir">
+
+                <span>İdeal alış</span>
+
+                <span
+                    class="deger"
+                    id="ideal"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="satir">
+
+                <span>Maksimum alış</span>
+
+                <span
+                    class="deger"
+                    id="maksimum"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="satir">
+
+                <span>Toplam maliyet</span>
+
+                <span
+                    class="deger"
+                    id="maliyet"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="satir">
+
+                <span>Önerilen satış</span>
+
+                <span
+                    class="deger"
+                    id="satis"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="satir">
+
+                <span>Tahmini net kâr</span>
+
+                <span
+                    class="deger"
+                    id="kar"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="not">
+
+                ⚠️ Bu şu an deneme hesaplamasıdır.
+                Gerçek piyasa araştırması ve AI bağlantısı
+                sonraki aşamada bağlanacaktır.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function tl(sayi){
+
+    return Number(sayi).toLocaleString("tr-TR") + " TL";
+
+}
+
+
+function analizEt(){
+
+    let piyasa = Number(
+        document.getElementById("istenen").value
+    );
+
+    let ekspertiz = Number(
+        document.getElementById("ekspertiz").value
+    ) || 0;
+
+    let noter = Number(
+        document.getElementById("noter").value
+    ) || 0;
+
+    let diger = Number(
+        document.getElementById("diger").value
+    ) || 0;
+
+    let minimumKar = Number(
+        document.getElementById("minimumKar").value
+    ) || 0;
+
+
+    if(!piyasa){
+
+        alert("Lütfen araç için istenen fiyatı gir.");
+
+        return;
+
+    }
+
+
+    let ideal = piyasa * 0.90;
+
+    let maksimum = piyasa * 0.93;
+
+    let maliyet =
+        maksimum +
+        ekspertiz +
+        noter +
+        diger;
+
+    let satis = piyasa;
+
+    let kar = satis - maliyet;
+
+
+    document.getElementById("piyasa").innerText =
+        tl(piyasa);
+
+    document.getElementById("ideal").innerText =
+        tl(ideal);
+
+    document.getElementById("maksimum").innerText =
+        tl(maksimum);
+
+    document.getElementById("maliyet").innerText =
+        tl(maliyet);
+
+    document.getElementById("satis").innerText =
+        tl(satis);
+
+    document.getElementById("kar").innerText =
+        tl(kar);
+
+
+    document.getElementById("sonuc").style.display =
+        "block";
+
+}
+
+</script>
+
+</body>
+</html>
